@@ -1,18 +1,57 @@
-# Node.js dependencies
+# ============================================================
+# KEVLA Engine — Git Ignore Rules
+# ============================================================
+
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
 
-# Vite build output
+# Build output
 dist/
-
-# Electron-builder release output
+dist-ssr/
 release/
+out/
 
-# Logs
-*.log
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# OS files
+# Editor & IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
 
-# Environment files
-.env
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+coverage/
+
+# Electron
+# Ignore packaged app output
+*.exe
+*.dmg
+*.AppImage
+*.deb
+*.rpm
+*.snap
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
