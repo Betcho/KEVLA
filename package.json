@@ -1,12 +1,21 @@
 {
-  "name": "react-vite-tailwind",
+  "name": "kevla-editor",
+  "productName": "KEVLA Editor",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "main": "electron/main.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "electron": "electron .",
+    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "predist": "vite build",
+    "dist": "electron-builder --config electron-builder.yml",
+    "dist:win": "electron-builder --config electron-builder.yml --win",
+    "dist:mac": "electron-builder --config electron-builder.yml --mac",
+    "dist:linux": "electron-builder --config electron-builder.yml --linux"
   },
   "dependencies": {
     "@types/three": "^0.183.1",
@@ -23,9 +32,12 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.1",
+    "concurrently": "^9.0.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0",
     "tailwindcss": "4.1.17",
     "typescript": "5.9.3",
     "vite": "7.2.4",
-    "vite-plugin-singlefile": "2.3.0"
+    "wait-on": "^8.0.0"
   }
 }
