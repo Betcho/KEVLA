@@ -1,6 +1,8 @@
 {
   "name": "kevla-editor",
   "productName": "KEVLA Editor",
+  "description": "KEVLA 3D Game Engine Editor",
+  "author": "KEVLA Engine Team",
   "private": true,
   "version": "1.0.0",
   "type": "module",
