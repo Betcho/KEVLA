@@ -1,3 +1,9 @@
+// ============================================================
+// KEVLA ENGINE EDITOR — Electron Main Process
+// Opens the built Vite app from dist/ as a native desktop window
+// Handles native window controls, menu, and file system access
+// ============================================================
+
 const { app, BrowserWindow, ipcMain, Menu, shell, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
@@ -25,7 +31,7 @@ function createWindow() {
     minWidth: 1280,
     minHeight: 720,
     title: `${APP_NAME} v${APP_VERSION}`,
-    icon: path.join(__dirname, 'icon.ico'),
+    icon: fs.existsSync(path.join(__dirname, 'icon.ico')) ? path.join(__dirname, 'icon.ico') : undefined,
 
     // Frameless window — we use our own custom title bar
     frame: false,
@@ -284,4 +290,3 @@ app.on('web-contents-created', (_event, contents) => {
     event.preventDefault();
   });
 });
-
