@@ -1,10 +1,11 @@
 # ============================================================
 # KEVLA ENGINE EDITOR — Electron Builder Configuration
-# Generates Windows installer (NSIS) and portable builds
 # ============================================================
 
 appId: com.kevla.editor
 productName: KEVLA Editor
+description: KEVLA 3D Game Engine Editor
+author: KEVLA Engine Team
 copyright: Copyright © 2026 KEVLA Engine
 
 # ---- Directories ----
@@ -12,19 +13,20 @@ directories:
   buildResources: electron/resources
   output: release
 
-# ---- Files to include in the package ----
+# ---- Files to include in the asar ----
 files:
-  - dist/**/*
-  - electron/main.js
-  - electron/preload.js
+  - from: dist
+    to: dist
+    filter:
+      - "**/*"
+  - from: electron
+    to: electron
+    filter:
+      - main.js
+      - preload.js
   - package.json
-  - "!node_modules/**/*"
-  - "!src/**/*"
-  - "!public/**/*"
-  - "!docs/**/*"
-  - "!assets/**/*"
 
-# ---- Extra resources (icons, default assets, etc.) ----
+# ---- Extra resources (outside asar) ----
 extraResources:
   - from: electron/resources/
     to: resources/
@@ -37,7 +39,7 @@ buildVersion: "1.0.0"
 artifactName: "KevlaEditor-${version}-Setup.${ext}"
 
 # ============================================================
-# Windows NSIS Installer Configuration
+# Windows
 # ============================================================
 win:
   target:
@@ -65,7 +67,7 @@ nsis:
   runAfterFinish: true
 
 # ============================================================
-# macOS Configuration (cross-platform ready)
+# macOS
 # ============================================================
 mac:
   target:
@@ -73,7 +75,6 @@ mac:
       arch:
         - x64
         - arm64
-  icon: electron/resources/icon.icns
   category: public.app-category.developer-tools
   hardenedRuntime: true
 
@@ -81,7 +82,7 @@ dmg:
   artifactName: "KevlaEditor-${version}.${ext}"
 
 # ============================================================
-# Linux Configuration (cross-platform ready)
+# Linux
 # ============================================================
 linux:
   target:
@@ -91,7 +92,6 @@ linux:
     - target: deb
       arch:
         - x64
-  icon: electron/resources/icons
   category: Development
   maintainer: KEVLA Engine Team
   desktop:
